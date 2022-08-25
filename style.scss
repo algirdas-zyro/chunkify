@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  @for $i from 1 through 5 {
+    &--desktop-#{$i} {
+      @for $j from 1 through $i {
+        .col:nth-child(#{$i}n + #{$j}) {
+          grid-column: $j;
+          height: random(100) + px;
+        }
+      }
+    }
+  }
+}
+
+.col {
+  background-color: blue;
+  width: calc(100% / var(--columnsDesktop));
+  align-self: flex-start;
+  justify-self: flex-start;
+}
